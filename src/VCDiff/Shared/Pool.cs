@@ -16,10 +16,12 @@ namespace VCDiff.Shared
         /// </summary>
         const int MaxBufferSize = LargeBufferMultiple * 2047;
 
-        public static RecyclableMemoryStreamManager MemoryStreamManager = new RecyclableMemoryStreamManager(BlockSize, LargeBufferMultiple, MaxBufferSize)
+        public static RecyclableMemoryStreamManager MemoryStreamManager = new RecyclableMemoryStreamManager(
+            new RecyclableMemoryStreamManager.Options(BlockSize, LargeBufferMultiple, MaxBufferSize, 0 ,0))
         {
-            AggressiveBufferReturn = true,
-            ThrowExceptionOnToArray = true
+            // TODO ymartel
+            //AggressiveBufferReturn = true,
+            //ThrowExceptionOnToArray = true
         };
     }
 }
